@@ -229,7 +229,25 @@ extract_areas(f)  # select
 
 
 # save the $text variable as a series of texts
+CELVAtext <- ### file chose to "CELVA.Sp_286.csv"
 
+output <- NULL
+for (i in seq_along(CELVAtext)) {
+
+    # read each file in and split apart into
+    # tokens and tags
+    x <- read_lines(CELVAtext[i])
+    x <- as.character(x)
+
+    # Save results
+    fout <- file(file.path("CELVA_raw", basename(lexdiv$document[i])), open = "w")
+    writeLines(y, fout)
+    close(fout)
+
+    # verbosely let us know the loop is still running
+    cat(sprintf("Done with %03d of %03d\n", i, length(CELVA_Sp_286$text)))
+}
+readtext::readtext("path_to/your_files/*.txt")
 
 
 
